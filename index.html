@@ -843,10 +843,10 @@
 
     navLinks.forEach(link => {
       link.addEventListener('click', e => {
-        e.preventDefault();
         const target = link.dataset.page;
         if (!target) return;
-    e.preventDefault();
+        
+        e.preventDefault();
         navLinks.forEach(l => l.classList.remove('active'));
         link.classList.add('active');
         pages.forEach(p => {
