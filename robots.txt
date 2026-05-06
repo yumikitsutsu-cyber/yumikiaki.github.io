@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://yumikitsutsu-cyber.github.io/yumikiaki.github.io/sitemap.xml
+Sitemap: https://www.yumikiaki.com/sitemap.xml
