@@ -595,12 +595,40 @@
 
     /* ─── MOBILE ─── */
     @media (max-width: 640px) {
-      header { padding: 0 1.4rem; }
-      header { padding: 0 1.2rem; height: 50px; }
-      .site-name { font-size: 0.82rem; }
-      nav { gap: 0.55rem; }
-      nav a { font-size: 0.64rem; letter-spacing: 0.05em; white-space: nowrap; }
+      header {
+  padding: 0 0.9rem;
+  height: 50px;
+  gap: 0.8rem;
+  overflow: hidden;
+}
 
+.site-name {
+  font-size: 0.78rem;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+nav {
+  gap: 0.85rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  flex: 1 1 auto;
+  justify-content: flex-start;
+  padding: 0.2rem 0;
+}
+
+nav::-webkit-scrollbar {
+  display: none;
+}
+
+nav a {
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
       .home-left {
         min-height: calc(100vh - 50px);
         padding: 4vh 1.2rem 3.2rem;
