@@ -371,6 +371,80 @@
       font-style: italic;
     }
 
+    /* ─── READINGS（作品鑑賞）─── */
+    /* 一覧（句のリスト）ページ */
+    .readings-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 8vh 2.8rem 10vh;
+    }
+
+    .reading-list-item {
+      display: block;
+      width: 100%;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      padding: 2.4rem 1rem;
+      cursor: pointer;
+      color: var(--text);
+      font-size: 1.15rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      line-height: 2;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .reading-list-item:last-of-type { border-bottom: 1px solid var(--border); }
+    .reading-list-item:hover { background: #f2f1ed; }
+
+    /* 個別ページ（俳句1つにつき1ページ） */
+    .reading-single-wrap {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 8vh 2.8rem 10vh;
+    }
+
+    .reading-back {
+      display: inline-block;
+      font-family: 'Cormorant', serif;
+      font-style: italic;
+      font-size: 0.86rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      cursor: pointer;
+      margin-bottom: 4rem;
+      transition: color 0.2s;
+    }
+    .reading-back:hover { color: var(--text); }
+
+    .reading-poem {
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      line-height: 2.2;
+      text-align: center;
+      color: var(--text);
+      margin-bottom: 3rem;
+    }
+
+    .reading-note-label {
+      font-size: 0.73rem;
+      letter-spacing: 0.32em;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 1.8rem;
+    }
+
+    .reading-note {
+      font-size: 0.85rem;
+      line-height: 2.3;
+      color: #4a4944;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    .reading-note + .reading-note { margin-top: 1.3rem; }
+
     /* ─── NEWS ─── */
     .news-wrap {
       max-width: 700px;
@@ -590,6 +664,7 @@
       <a data-page="about">ABOUT</a>
       <a data-page="works">WORKS</a>
       <a data-page="news">NEWS</a>
+      <a data-page="readings">READINGS</a>
       <a href="https://yumikiaki.bearblog.dev/" target="_blank" rel="noopener">BLOG</a>
       <a data-page="contact">CONTACT</a>
     </nav>
@@ -754,6 +829,63 @@
     <!-- ▲ WORKSここまで -->
   </div>
 
+  <!-- READINGS（作品鑑賞）-->
+  <!-- このタブは、一覧 → 個別の鑑賞ページ → 一覧へ戻る、という流れで動きます。 -->
+  <!-- ▼ READINGS：作品鑑賞。俳句1つにつき1ページ。
+       ＝＝ 句を1つ増やすときの手順（3ステップ）＝＝
+       (1) 下の「一覧ページ」に reading-list-item を1行コピーして追加し、
+           data-reading の番号を新しい番号にする（例：data-reading="reading-3"）。
+       (2) 「個別ページ」のブロック（<div class="page" id="page-reading-□"> ～ </div>）を
+           1つコピーして追加し、id を (1) と同じ番号にする（例：id="page-reading-3"）。
+       (3) 句と鑑賞文を書き換える。
+       ※ data-reading="reading-3" と id="page-reading-3" の番号は必ず一致させること。
+       ※ JavaScript（<script>の中）は触らなくてOK。番号を合わせるだけで自動でつながります。 -->
+
+  <!-- ▼ 一覧ページ（句の見出しが並ぶ。クリックでその句のページが開く） -->
+  <div class="page" id="page-readings">
+    <div class="readings-wrap">
+      <h2 class="page-heading">Readings</h2>
+
+      <!--
+      ▼ READINGS一覧
+      新しい鑑賞は、このすぐ下に追加してください。
+      例：
+      <a class="reading-list-item" data-reading="reading-3">ここに新しい句を書く</a>
+
+      ※ data-reading="reading-3" と、下の個別ページ id="page-reading-3" の番号を必ずそろえる。
+      ▲ READINGS一覧
+      -->
+
+      <!-- ▼ 一覧の1行。句を増やすときはこの reading-list-item を1行コピー -->
+      <a class="reading-list-item" data-reading="reading-1">（句1をここに）</a>
+      <a class="reading-list-item" data-reading="reading-2">（句2をここに）</a>
+      <!-- ▲ 一覧の行ここまで -->
+
+    </div>
+  </div>
+  <!-- ▲ 一覧ページここまで -->
+
+  <!-- ▼ 個別ページ（俳句1つにつき1ページ。id の番号を上の data-reading と合わせる） -->
+  <div class="page" id="page-reading-1">
+    <div class="reading-single-wrap">
+      <a class="reading-back" data-back-readings>← 一覧へ戻る</a>
+      <p class="reading-poem">（句1をここに）</p>
+      <p class="reading-note-label">一句鑑賞</p>
+      <p class="reading-note">（鑑賞文をここに書く。段落を増やすときは &lt;p class="reading-note"&gt;…&lt;/p&gt; をもう1つ足す。）</p>
+    </div>
+  </div>
+
+  <div class="page" id="page-reading-2">
+    <div class="reading-single-wrap">
+      <a class="reading-back" data-back-readings>← 一覧へ戻る</a>
+      <p class="reading-poem">（句2をここに）</p>
+      <p class="reading-note-label">一句鑑賞</p>
+      <p class="reading-note">（鑑賞文をここに書く。）</p>
+    </div>
+  </div>
+  <!-- ▲ 個別ページここまで -->
+  <!-- ▲ READINGSここまで -->
+
   <!-- NEWS -->
   <!-- ▼ NEWS：新しいお知らせをいちばん上に追加。news-item を1ブロックコピー -->
   <div class="page" id="page-news">
@@ -868,19 +1000,40 @@
     const navLinks = document.querySelectorAll('nav a');
     const pages    = document.querySelectorAll('.page');
 
+    function showPage(pageId) {
+      pages.forEach(p => p.classList.toggle('active', p.id === pageId));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function setNavActive(dataPage) {
+      navLinks.forEach(l => l.classList.toggle('active', l.dataset.page === dataPage));
+    }
+
+    // 上部ナビ（HOME / ABOUT / WORKS / NEWS / READINGS / CONTACT）
     navLinks.forEach(link => {
       link.addEventListener('click', e => {
         const target = link.dataset.page;
-        if (!target) return;
-        
+        if (!target) return;            // BLOG など外部リンク（href）はそのまま開く
         e.preventDefault();
-        navLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-        pages.forEach(p => {
-          p.classList.remove('active');
-          if (p.id === 'page-' + target) p.classList.add('active');
-        });
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setNavActive(target);
+        showPage('page-' + target);
+      });
+    });
+
+    // READINGS：一覧から個別の句のページを開く（reading-list-item をクリック）
+    document.querySelectorAll('[data-reading]').forEach(el => {
+      el.addEventListener('click', e => {
+        e.preventDefault();
+        showPage('page-' + el.dataset.reading); // 例：page-reading-1
+        setNavActive('readings');               // READINGS を選択中の状態に保つ
+      });
+    });
+
+    // READINGS：個別の句のページから一覧へ戻る（← 一覧へ戻る）
+    document.querySelectorAll('[data-back-readings]').forEach(el => {
+      el.addEventListener('click', e => {
+        e.preventDefault();
+        showPage('page-readings');
+        setNavActive('readings');
       });
     });
 
