@@ -873,7 +873,7 @@ nav a {
   <div class="page" id="page-readings">
     <div class="readings-wrap">
       <h2 class="page-heading">Readings｜一句鑑賞</h2>
-　　　 <h3 class="reading-note-label">弓木あきが読む。</p>
+　　　 <h3 class="reading-note-label">弓木あきが読む。</h3>
       
       <!--
       ▼ READINGS一覧
@@ -1066,13 +1066,17 @@ window.addEventListener('hashchange', openHashPage);
     });
 
     // READINGS：一覧から個別の句のページを開く（reading-list-item をクリック）
-    document.querySelectorAll('[data-reading]').forEach(el => {
-      el.addEventListener('click', e => {
-        e.preventDefault();
-        showPage('page-' + el.dataset.reading); // 例：page-reading-1
-        setNavActive('readings');               // READINGS を選択中の状態に保つ
-      });
-    });
+document.querySelectorAll('[data-reading]').forEach(el => {
+  el.addEventListener('click', e => {
+    e.preventDefault();
+
+    const readingId = el.dataset.reading; // 例：reading-1
+    history.pushState(null, '', '#' + readingId);
+
+    showPage('page-' + readingId);
+    setNavActive('readings');
+  });
+});
 
     // READINGS：個別の句のページから一覧へ戻る（← 一覧へ戻る）
     document.querySelectorAll('[data-back-readings]').forEach(el => {
