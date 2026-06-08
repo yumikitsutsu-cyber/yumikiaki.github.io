@@ -886,7 +886,7 @@ nav a {
       -->
 
       <!-- ▼ 一覧の1行。句を増やすときはこの reading-list-item を1行コピー -->
-      <a class="reading-list-item" data-reading="reading-1">夜焚火に金色の崖峙てり／水原秋櫻子</a>
+      <a class="reading-list-item" data-reading="reading-1" href="#reading-1">夜焚火に金色の崖峙てり／水原秋櫻子</a>
       <!-- ▲ 一覧の行ここまで -->
 
     </div>
@@ -1033,6 +1033,26 @@ nav a {
     function setNavActive(dataPage) {
       navLinks.forEach(l => l.classList.toggle('active', l.dataset.page === dataPage));
     }
+
+    function openHashPage() {
+  const hash = window.location.hash.replace('#', '');
+  if (!hash) return;
+
+  const page = document.getElementById('page-' + hash);
+  if (!page) return;
+
+  pages.forEach(p => p.classList.remove('active'));
+  page.classList.add('active');
+
+  navLinks.forEach(l => l.classList.remove('active'));
+  const readingsNav = document.querySelector('nav a[data-page="readings"]');
+  if (readingsNav) readingsNav.classList.add('active');
+
+  window.scrollTo({ top: 0, behavior: 'auto' });
+}
+
+window.addEventListener('load', openHashPage);
+window.addEventListener('hashchange', openHashPage);
 
     // 上部ナビ（HOME / ABOUT / WORKS / NEWS / READINGS / CONTACT）
     navLinks.forEach(link => {
