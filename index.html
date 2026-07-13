@@ -56,9 +56,11 @@
     "url": "https://www.yumikiaki.com/",
     "description": "俳人・作家。1999年生まれ、牡羊座。照明と近代建築と季節の果物が好き。俳句雑誌「noi」誌友、「noist 2025」に選出。",
     "jobTitle": ["俳人", "作家"]
+    
   }
-    const readingSearch = document.getElementById('reading-search');
-const readingItems = document.querySelectorAll('.reading-list-item');
+
+  const readingSearch = document.getElementById('reading-search');
+const readingSearchButton = document.getElementById('reading-search-button');
 const readingSearchCount = document.getElementById('reading-search-count');
 
 function normalizeReadingText(text) {
@@ -67,10 +69,11 @@ function normalizeReadingText(text) {
     .replace(/[　\s]+/g, '');
 }
 
-function updateReadingSearch() {
+function runReadingSearch() {
   if (!readingSearch) return;
 
   const keyword = normalizeReadingText(readingSearch.value);
+  const readingItems = document.querySelectorAll('.reading-list-item');
   let hitCount = 0;
 
   readingItems.forEach(item => {
@@ -88,6 +91,8 @@ function updateReadingSearch() {
     if (isMatched) hitCount++;
   });
 
+  if (!readingSearchCount) return;
+
   if (!keyword) {
     readingSearchCount.textContent = '';
   } else {
@@ -95,9 +100,25 @@ function updateReadingSearch() {
   }
 }
 
-if (readingSearch) {
-  readingSearch.addEventListener('input', updateReadingSearch);
+if (readingSearchButton) {
+  readingSearchButton.addEventListener('click', runReadingSearch);
 }
+
+if (readingSearch) {
+  readingSearch.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      runReadingSearch();
+    }
+  });
+
+  readingSearch.addEventListener('input', () => {
+    if (readingSearch.value === '') {
+      runReadingSearch();
+    }
+  });
+}
+    
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -443,8 +464,13 @@ if (readingSearch) {
   margin: 0 auto 2.4rem;
 }
 
+.reading-search-row {
+  display: flex;
+  gap: 0.6rem;
+}
+
 .reading-search {
-  width: 100%;
+  flex: 1;
   background: transparent;
   border: 1px solid var(--border);
   padding: 0.85rem 1rem;
@@ -455,12 +481,15 @@ if (readingSearch) {
   outline: none;
 }
 
-.reading-search:focus {
-  border-color: #b8b5ac;
-}
-
-.reading-search::placeholder {
-  color: #aaa;
+.reading-search-button {
+  border: 1px solid var(--text);
+  background: var(--text);
+  color: var(--bg);
+  padding: 0.85rem 1.1rem;
+  font-family: 'Shippori Mincho', serif;
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  cursor: pointer;
 }
 
 .reading-search-count {
@@ -474,6 +503,7 @@ if (readingSearch) {
 .reading-list-item.is-hidden {
   display: none;
 }
+
 
     /* 個別ページ（俳句1つにつき1ページ） */
     .reading-single-wrap {
@@ -964,7 +994,10 @@ nav a {
       <h2 class="page-heading">Readings｜一句鑑賞</h2>
 　　　 <h3 class="reading-note-label">弓木あきが読む。</h3>
       <div class="reading-search-wrap">
-  <input id="reading-search" class="reading-search" type="search" placeholder="句・作者・本文を検索" aria-label="READINGS内を検索">
+  <div class="reading-search-row">
+    <input id="reading-search" class="reading-search" type="search" placeholder="句・作者・本文を検索" aria-label="READINGS内を検索">
+    <button id="reading-search-button" class="reading-search-button" type="button">検索</button>
+  </div>
   <p id="reading-search-count" class="reading-search-count"></p>
 </div>
       
