@@ -1473,13 +1473,16 @@ document.querySelectorAll('[data-reading]').forEach(el => {
 });
 
     // READINGS：個別の句のページから一覧へ戻る（← 一覧へ戻る）
-    document.querySelectorAll('[data-back-readings]').forEach(el => {
-      el.addEventListener('click', e => {
-        e.preventDefault();
-        showPage('page-readings');
-        setNavActive('readings');
-      });
-    });
+   document.querySelectorAll('[data-back-readings]').forEach(el => {
+  el.addEventListener('click', e => {
+    e.preventDefault();
+
+    history.pushState(null, '', '#readings');
+
+    showPage('page-readings');
+    setNavActive('readings');
+  });
+});
 
     function handleSubmit(e) {
       e.preventDefault();
