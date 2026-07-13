@@ -48,78 +48,16 @@
   <meta name="twitter:title" content="弓木あき | 俳句・作家">
   <meta name="twitter:description" content="俳句・作家 弓木あきの公式サイト。プロフィール、著作・掲載、近況、お問い合わせ。">
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "弓木あき",
-    "alternateName": "Yumiki Aki",
-    "url": "https://www.yumikiaki.com/",
-    "description": "俳人・作家。1999年生まれ、牡羊座。照明と近代建築と季節の果物が好き。俳句雑誌「noi」誌友、「noist 2025」に選出。",
-    "jobTitle": ["俳人", "作家"]
-    
-  }
-
-  const readingSearch = document.getElementById('reading-search');
-const readingSearchButton = document.getElementById('reading-search-button');
-const readingSearchCount = document.getElementById('reading-search-count');
-
-function normalizeReadingText(text) {
-  return text
-    .toLowerCase()
-    .replace(/[　\s]+/g, '');
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "弓木あき",
+  "alternateName": "Yumiki Aki",
+  "url": "https://www.yumikiaki.com/",
+  "description": "俳人・作家。1999年生まれ、牡羊座。照明と近代建築と季節の果物が好き。俳句雑誌「noi」誌友、「noist 2025」に選出。",
+  "jobTitle": ["俳人", "作家"]
 }
-
-function runReadingSearch() {
-  if (!readingSearch) return;
-
-  const keyword = normalizeReadingText(readingSearch.value);
-  const readingItems = document.querySelectorAll('.reading-list-item');
-  let hitCount = 0;
-
-  readingItems.forEach(item => {
-    const readingId = item.dataset.reading;
-    const readingPage = document.getElementById('page-' + readingId);
-
-    const searchTarget = normalizeReadingText(
-      item.textContent + ' ' + (readingPage ? readingPage.textContent : '')
-    );
-
-    const isMatched = !keyword || searchTarget.includes(keyword);
-
-    item.classList.toggle('is-hidden', !isMatched);
-
-    if (isMatched) hitCount++;
-  });
-
-  if (!readingSearchCount) return;
-
-  if (!keyword) {
-    readingSearchCount.textContent = '';
-  } else {
-    readingSearchCount.textContent = hitCount + '件見つかりました';
-  }
-}
-
-if (readingSearchButton) {
-  readingSearchButton.addEventListener('click', runReadingSearch);
-}
-
-if (readingSearch) {
-  readingSearch.addEventListener('keydown', e => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      runReadingSearch();
-    }
-  });
-
-  readingSearch.addEventListener('input', () => {
-    if (readingSearch.value === '') {
-      runReadingSearch();
-    }
-  });
-}
-    
-  </script>
+</script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1556,6 +1494,67 @@ document.querySelectorAll('[data-reading]').forEach(el => {
       // ▲ CONTACT送信先メールアドレスここまで
       window.location.href = mailto;
     }
+
+    const readingSearch = document.getElementById('reading-search');
+const readingSearchButton = document.getElementById('reading-search-button');
+const readingSearchCount = document.getElementById('reading-search-count');
+
+function normalizeReadingText(text) {
+  return text
+    .toLowerCase()
+    .replace(/[　\s]+/g, '');
+}
+
+function runReadingSearch() {
+  if (!readingSearch) return;
+
+  const keyword = normalizeReadingText(readingSearch.value);
+  const readingItems = document.querySelectorAll('.reading-list-item');
+  let hitCount = 0;
+
+  readingItems.forEach(item => {
+    const readingId = item.dataset.reading;
+    const readingPage = document.getElementById('page-' + readingId);
+
+    const searchTarget = normalizeReadingText(
+      item.textContent + ' ' + (readingPage ? readingPage.textContent : '')
+    );
+
+    const isMatched = !keyword || searchTarget.includes(keyword);
+
+    item.classList.toggle('is-hidden', !isMatched);
+
+    if (isMatched) hitCount++;
+  });
+
+  if (!readingSearchCount) return;
+
+  if (!keyword) {
+    readingSearchCount.textContent = '';
+  } else {
+    readingSearchCount.textContent = hitCount + '件見つかりました';
+  }
+}
+
+if (readingSearchButton) {
+  readingSearchButton.addEventListener('click', runReadingSearch);
+}
+
+if (readingSearch) {
+  readingSearch.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      runReadingSearch();
+    }
+  });
+
+  readingSearch.addEventListener('input', () => {
+    if (readingSearch.value === '') {
+      runReadingSearch();
+    }
+  });
+}
+    
   </script>
 </body>
 </html>
