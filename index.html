@@ -1450,14 +1450,22 @@ window.addEventListener('hashchange', openHashPage);
 
     // 上部ナビ（HOME / ABOUT / WORKS / NEWS / READINGS / CONTACT）
     navLinks.forEach(link => {
-      link.addEventListener('click', e => {
-        const target = link.dataset.page;
-        if (!target) return;            // BLOG など外部リンク（href）はそのまま開く
-        e.preventDefault();
-        setNavActive(target);
-        showPage('page-' + target);
-      });
-    });
+  link.addEventListener('click', e => {
+    const target = link.dataset.page;
+    if (!target) return;
+
+    e.preventDefault();
+
+    if (target === 'home') {
+      history.pushState(null, '', window.location.pathname);
+    } else {
+      history.pushState(null, '', '#' + target);
+    }
+
+    setNavActive(target);
+    showPage('page-' + target);
+  });
+});
 
     // READINGS：一覧から個別の句のページを開く（reading-list-item をクリック）
 document.querySelectorAll('[data-reading]').forEach(el => {
