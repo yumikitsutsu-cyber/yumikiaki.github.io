@@ -57,6 +57,47 @@
     "description": "俳人・作家。1999年生まれ、牡羊座。照明と近代建築と季節の果物が好き。俳句雑誌「noi」誌友、「noist 2025」に選出。",
     "jobTitle": ["俳人", "作家"]
   }
+    const readingSearch = document.getElementById('reading-search');
+const readingItems = document.querySelectorAll('.reading-list-item');
+const readingSearchCount = document.getElementById('reading-search-count');
+
+function normalizeReadingText(text) {
+  return text
+    .toLowerCase()
+    .replace(/[　\s]+/g, '');
+}
+
+function updateReadingSearch() {
+  if (!readingSearch) return;
+
+  const keyword = normalizeReadingText(readingSearch.value);
+  let hitCount = 0;
+
+  readingItems.forEach(item => {
+    const readingId = item.dataset.reading;
+    const readingPage = document.getElementById('page-' + readingId);
+
+    const searchTarget = normalizeReadingText(
+      item.textContent + ' ' + (readingPage ? readingPage.textContent : '')
+    );
+
+    const isMatched = !keyword || searchTarget.includes(keyword);
+
+    item.classList.toggle('is-hidden', !isMatched);
+
+    if (isMatched) hitCount++;
+  });
+
+  if (!keyword) {
+    readingSearchCount.textContent = '';
+  } else {
+    readingSearchCount.textContent = hitCount + '件見つかりました';
+  }
+}
+
+if (readingSearch) {
+  readingSearch.addEventListener('input', updateReadingSearch);
+}
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -396,6 +437,43 @@
 
     .reading-list-item:last-of-type { border-bottom: 1px solid var(--border); }
     .reading-list-item:hover { background: #f2f1ed; }
+
+    .reading-search-wrap {
+  max-width: 520px;
+  margin: 0 auto 2.4rem;
+}
+
+.reading-search {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 0.85rem 1rem;
+  font-family: 'Shippori Mincho', serif;
+  font-size: 0.86rem;
+  color: var(--text);
+  letter-spacing: 0.06em;
+  outline: none;
+}
+
+.reading-search:focus {
+  border-color: #b8b5ac;
+}
+
+.reading-search::placeholder {
+  color: #aaa;
+}
+
+.reading-search-count {
+  margin-top: 0.7rem;
+  text-align: center;
+  font-size: 0.76rem;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+}
+
+.reading-list-item.is-hidden {
+  display: none;
+}
 
     /* 個別ページ（俳句1つにつき1ページ） */
     .reading-single-wrap {
@@ -885,6 +963,10 @@ nav a {
     <div class="readings-wrap">
       <h2 class="page-heading">Readings｜一句鑑賞</h2>
 　　　 <h3 class="reading-note-label">弓木あきが読む。</h3>
+      <div class="reading-search-wrap">
+  <input id="reading-search" class="reading-search" type="search" placeholder="句・作者・本文を検索" aria-label="READINGS内を検索">
+  <p id="reading-search-count" class="reading-search-count"></p>
+</div>
       
       <!--
       ▼ READINGS一覧
