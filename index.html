@@ -1512,8 +1512,9 @@ const readingSearchCount = document.getElementById('reading-search-count');
 
 function normalizeReadingText(text) {
   return text
+    .normalize('NFKC')
     .toLowerCase()
-    .replace(/[　\s]+/g, '');
+    .replace(/[　\s・、。,.，．「」『』（）()［］\[\]／/｜|]+/g, '');
 }
 
 function runReadingSearch() {
