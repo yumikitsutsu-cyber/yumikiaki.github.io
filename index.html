@@ -425,6 +425,32 @@
       font-style: italic;
     }
 
+    #page-works {
+  position: relative;
+  overflow: hidden;
+}
+
+#page-works::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(250, 250, 248, 0.82), rgba(250, 250, 248, 0.82)),
+    url("works-bg.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 1;
+  filter: saturate(0.7) contrast(0.95);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#page-works > * {
+  position: relative;
+  z-index: 1;
+}
+
     /* ─── READINGS（作品鑑賞）─── */
     /* 一覧（句のリスト）ページ */
     .readings-wrap {
