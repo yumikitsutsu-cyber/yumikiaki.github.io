@@ -126,9 +126,25 @@
     #page-home.active { display: block; }
 
     /* ─── HOME ─── */
-    #page-home {
-      min-height: 100vh;
-    }
+   #page-home {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+#page-home::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("home-bg.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0.16;
+  filter: saturate(0.8) contrast(0.95);
+  pointer-events: none;
+  z-index: 0;
+}
 
     #page-home.active { display: block; }
 
