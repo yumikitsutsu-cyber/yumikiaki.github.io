@@ -310,6 +310,30 @@
 
     .profile-value { font-size: 0.88rem; line-height: 1.9; }
 
+    #page-about {
+  position: relative;
+  overflow: hidden;
+}
+
+#page-about::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("about-bg.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0.10;
+  filter: saturate(0.75) contrast(0.95);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#page-about > * {
+  position: relative;
+  z-index: 1;
+}
+
     /* ─── WORKS ─── */
     .works-wrap {
       max-width: 840px;
