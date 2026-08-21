@@ -243,6 +243,32 @@
       font-style: italic;
     }
 
+    #page-news {
+  position: relative;
+  overflow: hidden;
+}
+
+#page-news::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(250, 250, 248, 0.86), rgba(250, 250, 248, 0.86)),
+    url("news-bg.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 1;
+  filter: saturate(0.72) contrast(0.95);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#page-news > * {
+  position: relative;
+  z-index: 1;
+}
+
     /* ─── ABOUT ─── */
     .about-wrap {
       max-width: 660px;
