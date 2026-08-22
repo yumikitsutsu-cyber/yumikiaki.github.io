@@ -401,12 +401,32 @@ button:hover,
     }
 
     .work-item {
-      border-top: 1px solid var(--border);
-      padding: 3rem 0;
-      display: grid;
-      grid-template-columns: 100px 1fr;
-      gap: 3rem;
-    }
+  border-top: 1px solid var(--border);
+  padding: 3rem 0;
+  display: grid;
+  grid-template-columns: 100px 120px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.work-cover {
+  width: 120px;
+  height: auto;
+  border: 1px solid var(--border);
+  display: block;
+}
+
+.work-item.is-reverse {
+  grid-template-columns: 100px 1fr 120px;
+}
+
+.work-item.is-reverse .work-body {
+  grid-column: 2;
+}
+
+.work-item.is-reverse .work-cover {
+  grid-column: 3;
+}
 
     .work-item:last-of-type { border-bottom: 1px solid var(--border); }
 
@@ -900,6 +920,20 @@ nav a {
       .work-body h3 { font-size: 1.05rem; }
       .work-body p { font-size: 0.82rem; }
 
+.work-item.is-reverse {
+  grid-template-columns: 1fr;
+}
+
+.work-item.is-reverse .work-body,
+.work-item.is-reverse .work-cover {
+  grid-column: auto;
+}
+
+.work-cover {
+  width: 110px;
+  margin: 0.4rem 0 0.8rem;
+}
+
       .essay-row { flex-direction: column; gap: 0.2rem; padding: 0.9rem 0; }
       .essay-info { text-align: left; }
 
@@ -1166,30 +1200,36 @@ footer {
 
       <!-- ▼ WORKS作品1：新しい作品を増やすときは work-item を1ブロックコピー -->
       <div class="work-item">
-        <div class="work-meta">
-          <span class="work-category">句集</span>
-          <span class="work-year">Haiku</span>
-        </div>
-        <div class="work-body">
-          <h3>くるる</h3>
-          <p class="work-reading">2025年 ／ むじな発行所 ／ 全115句</p>
-          <p>第一句集。錠剤のまあるい眠り、サンキャッチャーが散らす虹のかけら、号泣のあとに届く光——日常の微細な瞬間を十七音に封じ込めた。跋文のエッセイ「まなざす｜the gift of witnessing」も収録。</p>
-          <p style="margin-top:1.2rem;"><a href="https://yumikitsutsu.base.shop/items/120316571" target="_blank" rel="noopener" style="font-size:0.78rem;letter-spacing:0.15em;color:var(--muted);border-bottom:1px solid var(--border);transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--text)';this.style.borderColor='var(--text)'" onmouseout="this.style.color='var(--muted)';this.style.borderColor='var(--border)'">→ 購入はこちら</a></p>
-        </div>
-      </div>
+  <div class="work-meta">
+    <span class="work-category">句集</span>
+    <span class="work-year">Haiku</span>
+  </div>
 
-      <div class="work-item">
-        <div class="work-meta">
-          <span class="work-category">小説集</span>
-          <span class="work-year">Fiction</span>
-        </div>
-        <div class="work-body">
-          <h3>桃のひるげ</h3>
-          <p class="work-reading">2026年 ／ 全8篇</p>
-          <p>名前のつけられない関係と、ばらばらにやってくるしあわせをめぐる連作。バスの遅延、ビリヤニを混ぜる銀のスプーン、冬の夜のパピコ、二つの赤い椅子。食べること、見ること、景色を覚えていること——それだけでじゅうぶんだという発見が、全篇を静かに貫く。</p>
-          <p style="margin-top:1.2rem;"><a href="https://yumikitsutsu.base.shop/items/140039185" target="_blank" rel="noopener" style="font-size:0.78rem;letter-spacing:0.15em;color:var(--muted);border-bottom:1px solid var(--border);transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--text)';this.style.borderColor='var(--text)'" onmouseout="this.style.color='var(--muted)';this.style.borderColor='var(--border)'">→ 購入はこちら</a></p>
-        </div>
-      </div>
+  <img src="kururu-cover.jpg" alt="第一句集『くるる』書影" class="work-cover">
+
+  <div class="work-body">
+    <h3>くるる</h3>
+    <p class="work-reading">2025年 ／ むじな発行所 ／ 全115句</p>
+    <p>第一句集。錠剤のまあるい眠り、サンキャッチャーが散らす虹のかけら、号泣のあとに届く光——日常の微細な瞬間を十七音に封じ込めた。跋文のエッセイ「まなざす｜the gift of witnessing」も収録。</p>
+    <p style="margin-top:1.2rem;"><a href="https://yumikitsutsu.base.shop/items/120316571" target="_blank" rel="noopener" style="font-size:0.78rem;letter-spacing:0.15em;color:var(--muted);border-bottom:1px solid var(--border);transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--text)';this.style.borderColor='var(--text)'" onmouseout="this.style.color='var(--muted)';this.style.borderColor='var(--border)'">→ 購入はこちら</a></p>
+  </div>
+</div>
+
+      <div class="work-item is-reverse">
+  <div class="work-meta">
+    <span class="work-category">小説集</span>
+    <span class="work-year">Fiction</span>
+  </div>
+
+  <img src="momo-cover.jpg" alt="小説集『桃のひるげ』書影" class="work-cover">
+
+  <div class="work-body">
+    <h3>桃のひるげ</h3>
+    <p class="work-reading">2026年 ／ 全8篇</p>
+    <p>名前のつけられない関係と、ばらばらにやってくるしあわせをめぐる連作。バスの遅延、ビリヤニを混ぜる銀のスプーン、冬の夜のパピコ、二つの赤い椅子。食べること、見ること、景色を覚えていること——それだけでじゅうぶんだという発見が、全篇を静かに貫く。</p>
+    <p style="margin-top:1.2rem;"><a href="https://yumikitsutsu.base.shop/items/140039185" target="_blank" rel="noopener" style="font-size:0.78rem;letter-spacing:0.15em;color:var(--muted);border-bottom:1px solid var(--border);transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--text)';this.style.borderColor='var(--text)'" onmouseout="this.style.color='var(--muted)';this.style.borderColor='var(--border)'">→ 購入はこちら</a></p>
+  </div>
+</div>
 
       <!-- ▲ WORKS作品ブロックここまで -->
       <p class="works-section-label">掲載情報</p>
