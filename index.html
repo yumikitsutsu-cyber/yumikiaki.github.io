@@ -416,23 +416,19 @@ button:hover,
   display: block;
 }
 
-.work-cover-large {
-  width: 240px;
-}
-
 .work-item-large-cover {
-  grid-template-columns: 100px 260px minmax(0, 1fr);
-  gap: 3rem;
+  grid-template-columns: 100px 260px minmax(460px, 1fr);
+  gap: 2.8rem;
 }
 
-.work-item-large-cover .work-body p {
-  max-width: 620px;
-}
-
-.work-cover-large {
+.work-item-large-cover .work-cover-large {
   width: 260px;
 }
 
+.work-item-large-cover .work-body {
+  max-width: 560px;
+}
+    
 .work-meta {
   grid-column: 1;
   grid-row: 1;
