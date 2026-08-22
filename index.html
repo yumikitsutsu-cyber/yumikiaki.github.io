@@ -1025,6 +1025,62 @@ nav a {
   line-height: 2.12;
 }
 
+    /* ─── WORKS MOBILE FIX ─── */
+@media (max-width: 640px) {
+  .works-wrap {
+    padding: 4vh 1.2rem 6vh !important;
+  }
+
+  .work-item,
+  .work-item.is-reverse,
+  .work-item-large-cover {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 0.9rem !important;
+    padding: 2.4rem 0 !important;
+  }
+
+  .work-meta,
+  .work-cover,
+  .work-cover-large,
+  .work-body,
+  .work-item.is-reverse .work-cover,
+  .work-item.is-reverse .work-body,
+  .work-item-large-cover .work-cover,
+  .work-item-large-cover .work-body {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+
+  .work-meta {
+    flex-direction: row !important;
+    gap: 1rem !important;
+  }
+
+  .work-cover,
+  .work-cover-large {
+    width: 160px !important;
+    max-width: 70vw !important;
+    height: auto !important;
+    margin: 0.5rem 0 1.2rem !important;
+    transform: none !important;
+  }
+
+  .work-body {
+    max-width: none !important;
+  }
+
+  .work-body h3 {
+    font-size: 1.08rem !important;
+  }
+
+  .work-body p {
+    font-size: 0.84rem !important;
+    line-height: 2.05 !important;
+    max-width: none !important;
+  }
+}
+
 　　/* ─── ACCENT GREEN ─── */
 
 /* ヘッダー */
