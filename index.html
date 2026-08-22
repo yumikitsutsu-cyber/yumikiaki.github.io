@@ -424,12 +424,31 @@ button:hover,
   grid-template-columns: 100px 1fr 120px;
 }
 
+.work-meta {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.work-cover {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.work-body {
+  grid-column: 3;
+  grid-row: 1;
+}
+
 .work-item.is-reverse .work-body {
   grid-column: 2;
+  grid-row: 1;
 }
 
 .work-item.is-reverse .work-cover {
   grid-column: 3;
+  grid-row: 1;
+  transform: none;
+  align-self: start;
 }
 
     .work-item:last-of-type { border-bottom: 1px solid var(--border); }
