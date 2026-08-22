@@ -77,10 +77,11 @@
       --muted: #76736c;
       --border: #e4e4e0;
     
-
-    --accent: #8fbc6a;
-    --accent-soft: rgba(143, 188, 106, 0.18);
-    --accent-deep: #5f8f49;
+　　　--accent: #5f8f49;
+　　　--accent-soft: rgba(95, 143, 73, 0.20);
+　　　--accent-soft-strong: rgba(95, 143, 73, 0.30);
+　　　--accent-deep: #315f25;
+  
     }
 
     nav a.active,
@@ -952,39 +953,95 @@ nav a {
   line-height: 2.12;
 }
 
-/* ─── ACCENT GREEN ─── */
-nav a.active,
-nav a:hover {
-  color: var(--accent-deep) !important;
-}
+　　/* ─── ACCENT GREEN ─── */
 
-.page-heading {
+/* ヘッダー */
+header {
   border-bottom-color: var(--accent) !important;
 }
 
+.site-name {
+  color: var(--accent-deep) !important;
+}
+
+nav a.active,
+nav a:hover {
+  color: var(--accent-deep) !important;
+  font-weight: 600;
+}
+
+/* 各ページ見出し */
+.page-heading {
+  color: var(--accent-deep) !important;
+  border-bottom-color: var(--accent) !important;
+}
+
+/* 小見出し・ラベル類 */
+.about-section h3,
+.works-section-label,
+.reading-note-label,
+.work-category,
+.profile-label,
+.form-label,
+.news-date {
+  color: var(--accent-deep) !important;
+}
+
+/* 区切り線をグリーンに */
+.home-books,
 .home-book,
 .profile-line,
+.profile-line:last-child,
 .work-item,
+.work-item:last-of-type,
 .essay-row,
+.essay-row:last-child,
+.reading-list-item,
+.reading-list-item:last-of-type,
 .news-item,
-.form-row {
+.news-item:last-of-type,
+.form-row,
+.form-row:last-of-type,
+footer {
   border-color: var(--accent) !important;
 }
 
-.reading-list-item {
-  border-color: var(--accent) !important;
+/* リンク類 */
+.home-book a,
+.about-section a,
+.work-body a,
+.essay-info a,
+.reading-back:hover,
+.footer-social a:hover {
+  color: var(--accent-deep) !important;
+  border-bottom-color: var(--accent) !important;
 }
 
+/* READINGS一覧 */
 .reading-list-item:hover {
   background: var(--accent-soft) !important;
+  color: var(--accent-deep) !important;
 }
 
+/* 検索欄・ボタン */
 .reading-search,
 .reading-search-button,
 .btn {
   border: 1px solid var(--accent) !important;
 }
 
+.reading-search:focus {
+  border-color: var(--accent-deep) !important;
+  background: rgba(95, 143, 73, 0.06) !important;
+}
+
+/* CONTACTフォーム */
+.form-row:focus-within {
+  border-color: var(--accent-deep) !important;
+  background: rgba(95, 143, 73, 0.06) !important;
+}
+
+/* ボタン本体 */
 .reading-search-button,
 .btn {
   background: var(--accent-deep) !important;
@@ -995,6 +1052,11 @@ nav a:hover {
 .btn:hover {
   background: var(--accent) !important;
   opacity: 1 !important;
+}
+
+/* 選択した文字の背景 */
+::selection {
+  background: var(--accent-soft-strong);
 }
     
   </style>
