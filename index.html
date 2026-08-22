@@ -78,6 +78,31 @@
       --border: #e4e4e0;
     }
 
+    --accent: #8fbc6a;
+--accent-soft: rgba(143, 188, 106, 0.18);
+--accent-deep: #5f8f49;
+
+    nav a.active,
+nav a:hover {
+  color: var(--accent-deep);
+}
+
+.page-heading {
+  border-bottom-color: var(--accent);
+}
+
+button,
+.contact-submit,
+.reading-search-button {
+  border-color: var(--accent);
+}
+
+button:hover,
+.contact-submit:hover,
+.reading-search-button:hover {
+  background: var(--accent-soft);
+}
+
     html { scroll-behavior: smooth; font-size: 15px; }
     body {
       background: var(--bg);
