@@ -404,24 +404,16 @@ button:hover,
   border-top: 1px solid var(--border);
   padding: 3rem 0;
   display: grid;
-  grid-template-columns: 100px 120px 1fr;
-  gap: 2rem;
+  grid-template-columns: 100px 1fr 180px;
+  gap: 2.8rem;
   align-items: start;
 }
 
 .work-cover {
-  width: 120px;
+  width: 180px;
   height: auto;
   border: 1px solid var(--border);
   display: block;
-}
-
-.work-item.is-reverse .work-cover {
-  transform: translateY(3.2rem);
-}
-
-.work-item.is-reverse {
-  grid-template-columns: 100px 1fr 120px;
 }
 
 .work-meta {
@@ -439,6 +431,10 @@ button:hover,
   grid-row: 1;
 }
 
+.work-item.is-reverse {
+  grid-template-columns: 100px 1fr 180px;
+}
+
 .work-item.is-reverse .work-body {
   grid-column: 2;
   grid-row: 1;
@@ -447,8 +443,6 @@ button:hover,
 .work-item.is-reverse .work-cover {
   grid-column: 3;
   grid-row: 1;
-  transform: none;
-  align-self: start;
 }
 
     .work-item:last-of-type { border-bottom: 1px solid var(--border); }
