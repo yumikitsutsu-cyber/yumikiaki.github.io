@@ -417,8 +417,8 @@ button:hover,
 }
 
 .work-item-large-cover {
-  grid-template-columns: 100px 260px minmax(460px, 1fr);
-  gap: 2.8rem;
+  grid-template-columns: 100px 260px minmax(0, 1fr);
+  gap: 3rem;
 }
 
 .work-item-large-cover .work-cover-large {
@@ -426,7 +426,12 @@ button:hover,
 }
 
 .work-item-large-cover .work-body {
-  max-width: 560px;
+  min-width: 0;
+  max-width: 520px;
+}
+
+.work-item-large-cover .work-body p {
+  max-width: 520px;
 }
     
 .work-meta {
