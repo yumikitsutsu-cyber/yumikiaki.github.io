@@ -569,6 +569,25 @@ button:hover,
   z-index: 1;
 }
 
+    #page-works::after {
+  content: "Works";
+  position: absolute;
+  top: 7rem;
+  left: 9vw;
+  font-family: 'Cormorant', serif;
+  font-size: clamp(5rem, 14vw, 12rem);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: rgba(49, 95, 37, 0.08);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#page-works > * {
+  position: relative;
+  z-index: 1;
+}
+
     /* ─── READINGS（作品鑑賞）─── */
     /* 一覧（句のリスト）ページ */
     .readings-wrap {
