@@ -769,6 +769,30 @@ button:hover,
       color: #33322e;
     }
 
+    #page-news {
+  position: relative;
+  overflow: hidden;
+}
+
+#page-news::after {
+  content: "News";
+  position: absolute;
+  top: 7rem;
+  left: 9vw;
+  font-family: 'Cormorant', serif;
+  font-size: clamp(5rem, 14vw, 12rem);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: rgba(49, 95, 37, 0.06);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#page-news > * {
+  position: relative;
+  z-index: 1;
+}
+
     /* ─── CONTACT ─── */
     .contact-wrap {
       max-width: 580px;
