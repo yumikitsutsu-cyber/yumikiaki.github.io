@@ -659,6 +659,30 @@ button:hover,
   display: none;
 }
 
+    #page-readings::after {
+  content: "Readings";
+  position: absolute;
+  top: 7rem;
+  left: 8vw;
+  font-family: 'Cormorant', serif;
+  font-size: clamp(4.5rem, 13vw, 11rem);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: rgba(49, 95, 37, 0.06);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#page-readings {
+  position: relative;
+  overflow: hidden;
+}
+
+#page-readings > * {
+  position: relative;
+  z-index: 1;
+}
+
 
     /* 個別ページ（俳句1つにつき1ページ） */
     .reading-single-wrap {
