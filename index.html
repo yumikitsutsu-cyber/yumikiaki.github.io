@@ -612,6 +612,30 @@ button:hover,
   z-index: 1;
 }
 
+/* WORKS：テキストだけの項目用 */
+.work-item-text {
+  grid-template-columns: 100px minmax(0, 1fr) !important;
+}
+
+.work-item-text .work-meta {
+  grid-column: 1 !important;
+}
+
+.work-item-text .work-body {
+  grid-column: 2 !important;
+}
+
+@media (max-width: 640px) {
+  .work-item-text {
+    grid-template-columns: 1fr !important;
+  }
+
+  .work-item-text .work-meta,
+  .work-item-text .work-body {
+    grid-column: auto !important;
+  }
+}
+
     /* ─── READINGS（作品鑑賞）─── */
     /* 一覧（句のリスト）ページ */
     .readings-wrap {
