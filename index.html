@@ -636,6 +636,30 @@ button:hover,
   }
 }
 
+    /* WORKS：外部リンクボタン */
+.work-link-row {
+  margin-top: 1.2rem;
+}
+
+.work-link-button {
+  display: inline-block;
+  padding: 0.55rem 1.15rem;
+  border: 1px solid #315f25;
+  background: #315f25;
+  color: #fafaf8 !important;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.work-link-button:hover {
+  background: #5f8f49;
+  border-color: #5f8f49;
+  transform: translateY(-1px);
+}
+
     /* ─── READINGS（作品鑑賞）─── */
     /* 一覧（句のリスト）ページ */
     .readings-wrap {
@@ -1318,7 +1342,6 @@ footer {
 .about-wrap > .about-list-item:first-of-type {
   border-top: none !important;
 }
-    
   </style>
 </head>
 <body>
@@ -1465,9 +1488,11 @@ footer {
       ままならない日々のなかで、暮らすことを、ひとつずつ、なおしてみる。花を買う。眠る。歩く。本を読む。誰かと話す。休むことと暮らすことのあいだで見つけた小さなことを書き留めるエッセイ連載。
       noteにて更新。
     </p>
-    <p>
-      <a href="https://note.com/yumikitsutsu23/m/m841a8e8c645e" target="_blank" rel="noopener noreferrer">noteで読む</a>
-    </p>
+    <p class="work-link-row">
+     <a class="work-link-button" href="https://note.com/yumikitsutsu23/m/m841a8e8c645e" target="_blank" rel="noopener noreferrer">
+        noteで読む →
+     </a>
+     </p>
   </div>
 </div>
 
