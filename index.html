@@ -660,6 +660,40 @@ button:hover,
   transform: translateY(-1px);
 }
 
+    /* WORKS：noteで読むボタンを強制的に見やすくする */
+.work-body a.work-link-button {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  min-width: 170px;
+  padding: 0.65rem 1.35rem;
+  border: 1px solid #315f25 !important;
+  border-radius: 999px;
+  background: #315f25 !important;
+  color: #fafaf8 !important;
+  font-size: 0.82rem;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+.work-body a.work-link-button:hover {
+  background: #5f8f49 !important;
+  border-color: #5f8f49 !important;
+  color: #fafaf8 !important;
+  transform: translateY(-1px);
+}
+
+.work-body a.work-link-button:focus {
+  outline: none;
+}
+
+.work-body a.work-link-button:focus-visible {
+  outline: 2px solid #5f8f49;
+  outline-offset: 3px;
+}
+
     /* ─── READINGS（作品鑑賞）─── */
     /* 一覧（句のリスト）ページ */
     .readings-wrap {
