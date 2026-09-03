@@ -1562,6 +1562,25 @@ nav a {
 .about-section h3 {
   font-weight: 500 !important;
 }
+
+    /* Home以外の背景画像を消して軽くする */
+#page-works,
+#page-readings,
+#page-news,
+#page-about,
+#page-contact {
+  background: #fafaf8 !important;
+}
+
+#page-works::before,
+#page-readings::before,
+#page-news::before,
+#page-about::before,
+#page-contact::before {
+  content: none !important;
+  background: none !important;
+  opacity: 0 !important;
+}
     
   </style>
 </head>
