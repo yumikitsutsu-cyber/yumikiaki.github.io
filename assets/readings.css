@@ -1,0 +1,401 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #f7f2e8;
+  --text: #1a1a18;
+  --muted: #76736c;
+  --border: rgba(49, 95, 37, 0.45);
+  --accent: #5f8f49;
+  --accent-soft: rgba(95, 143, 73, 0.12);
+  --accent-deep: #315f25;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 15px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Shippori Mincho', serif;
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  height: 54px;
+  padding: 0 2.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(247, 242, 232, 0.94);
+  border-bottom: 1px solid var(--accent);
+}
+
+.site-name {
+  color: var(--accent-deep);
+  font-size: 0.88rem;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+}
+
+nav {
+  display: flex;
+  gap: 1.6rem;
+}
+
+nav a {
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+nav a.active,
+nav a:hover {
+  color: var(--accent-deep);
+}
+
+.page-heading {
+  font-family: 'Cormorant', serif;
+  font-weight: 500;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  letter-spacing: 0.06em;
+  margin-bottom: 3.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--accent);
+  color: var(--accent-deep);
+}
+
+.readings-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: calc(54px + 8vh) 2.8rem 10vh;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.readings-wrap::before,
+.reading-main::before {
+  content: "Readings";
+  position: absolute;
+  font-family: 'Cormorant', serif;
+  font-size: clamp(4.5rem, 13vw, 11rem);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: rgba(49, 95, 37, 0.045);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.readings-wrap::before {
+  top: 7rem;
+  left: -5rem;
+}
+
+.readings-inner,
+article {
+  position: relative;
+  z-index: 1;
+}
+
+.reading-note-label {
+  font-size: 0.73rem;
+  letter-spacing: 0.32em;
+  color: var(--accent-deep);
+  text-align: center;
+  margin: -1.4rem 0 2.4rem;
+}
+
+.reading-search-wrap {
+  max-width: 520px;
+  margin: 0 auto 2.4rem;
+}
+
+.reading-search-row {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.reading-search {
+  flex: 1;
+  background: rgba(95, 143, 73, 0.10);
+  border: 1px solid var(--accent);
+  padding: 0.85rem 1rem;
+  font-family: 'Shippori Mincho', serif;
+  font-size: 0.86rem;
+  color: var(--text);
+  letter-spacing: 0.06em;
+  outline: none;
+}
+
+.reading-search:focus {
+  border-color: var(--accent-deep);
+  background: rgba(95, 143, 73, 0.16);
+}
+
+.reading-search::placeholder {
+  color: rgba(49, 95, 37, 0.65);
+}
+
+.reading-search-button {
+  border: 1px solid var(--accent-deep);
+  background: var(--accent-deep);
+  color: var(--bg);
+  padding: 0.85rem 1.1rem;
+  font-family: 'Shippori Mincho', serif;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+}
+
+.reading-search-button:hover {
+  background: var(--accent);
+}
+
+.reading-search-count {
+  margin-top: 0.7rem;
+  text-align: center;
+  font-size: 0.76rem;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+}
+
+.reading-list-item {
+  display: block;
+  width: 100%;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  padding: 2.4rem 1rem;
+  color: var(--text);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 2;
+  transition: background 0.2s, color 0.2s;
+}
+
+.reading-list-item:last-of-type {
+  border-bottom: 1px solid var(--border);
+}
+
+.reading-list-item:hover {
+  background: var(--accent-soft);
+  color: var(--accent-deep);
+}
+
+.reading-list-item.is-hidden {
+  display: none;
+}
+
+.reading-author-inline {
+  white-space: nowrap;
+}
+
+.reading-main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 8.5rem 2.2rem 7rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.reading-main::before {
+  top: 5.8rem;
+  left: -4.5rem;
+}
+
+.reading-label {
+  color: var(--accent-deep);
+  font-size: 0.76rem;
+  letter-spacing: 0.28em;
+  margin-bottom: 3.2rem;
+  text-align: center;
+}
+
+.reading-poem {
+  color: var(--text);
+  font-size: clamp(1.35rem, 3.1vw, 2rem);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  line-height: 2;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.reading-author {
+  display: block;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.reading-body {
+  border-top: 1px solid var(--border);
+  padding-top: 3.2rem;
+  color: #1f1f1b;
+  font-size: 0.92rem;
+  font-weight: 500;
+  line-height: 2.25;
+}
+
+.reading-body p {
+  margin-bottom: 1.65rem;
+}
+
+.reading-nav {
+  margin-top: 4.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+}
+
+.reading-nav a {
+  color: var(--accent-deep);
+  border-bottom: 1px solid var(--accent);
+}
+
+footer {
+  text-align: center;
+  padding: 0 2.8rem 3rem;
+  color: var(--muted);
+  font-size: 0.73rem;
+  letter-spacing: 0.15em;
+}
+
+@media (max-width: 640px) {
+  header {
+    padding: 0 0.9rem;
+    height: 50px;
+    gap: 0.8rem;
+    overflow: hidden;
+  }
+
+  .site-name {
+    font-size: 0.78rem;
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  nav {
+    gap: 0.85rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex: 1 1 auto;
+    justify-content: flex-start;
+    padding: 0.2rem 0;
+  }
+
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  nav a {
+    font-size: 0.62rem;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    flex: 0 0 auto;
+  }
+
+  .readings-wrap {
+    padding: calc(50px + 4vh) 1.4rem 6vh;
+  }
+
+  .readings-wrap::before,
+  .reading-main::before {
+    top: 5.5rem;
+    left: -2rem;
+    font-size: clamp(4rem, 22vw, 7rem);
+    color: rgba(49, 95, 37, 0.04);
+  }
+
+  .page-heading {
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+    margin-bottom: 2.5rem;
+  }
+
+  .reading-search-row {
+    gap: 0.45rem;
+  }
+
+  .reading-search {
+    font-size: 0.82rem;
+    padding: 0.78rem 0.8rem;
+  }
+
+  .reading-search-button {
+    font-size: 0.72rem;
+    padding: 0.78rem 0.85rem;
+    letter-spacing: 0.08em;
+  }
+
+  .reading-list-item {
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    line-height: 2;
+    padding: 1.9rem 0.6rem;
+  }
+
+  .reading-main {
+    padding: 6.8rem 1.2rem 5rem;
+  }
+
+  .reading-label {
+    margin-bottom: 2.6rem;
+  }
+
+  .reading-poem {
+    font-size: 1.22rem;
+    letter-spacing: 0.08em;
+  }
+
+  .reading-author {
+    margin-bottom: 3rem;
+  }
+
+  .reading-body {
+    padding-top: 2.6rem;
+    font-size: 0.88rem;
+    line-height: 2.12;
+  }
+
+  .reading-nav {
+    display: block;
+  }
+
+  .reading-nav a {
+    display: inline-block;
+    margin: 0 1.2rem 1rem 0;
+  }
+
+  footer {
+    padding: 0 1.2rem 2.4rem;
+  }
+}
