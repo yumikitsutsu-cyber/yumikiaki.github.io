@@ -227,8 +227,19 @@ article {
   color: var(--accent-deep);
   font-size: 0.76rem;
   letter-spacing: 0.28em;
-  margin-bottom: 3.2rem;
+  margin-bottom: 2.6rem;
   text-align: center;
+}
+
+.reading-label::after {
+  content: "弓木あきが読む。";
+  display: block;
+  margin-top: 1.4rem;
+  font-family: 'Shippori Mincho', serif;
+  font-size: 0.73rem;
+  letter-spacing: 0.32em;
+  color: var(--accent-deep);
+  font-weight: 500;
 }
 
 .reading-poem {
